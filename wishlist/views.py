@@ -15,12 +15,13 @@ def show_json(request):
     data = BarangWishlist.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-def show_by_id(request, id):
+def show_JSON_by_id(request, id):
     data = BarangWishlist.objects.filter(pk=id)
-    if id == 1:
-        return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-    elif id == 2:
-        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_XML_by_id(request, id):
+    data = BarangWishlist.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 data_barang_wishlist = BarangWishlist.objects.all()
 context = {
